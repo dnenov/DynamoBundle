@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>PurgeImportedDWG</Text>
+    <Description>Some description for DynamoBundle</Description>
+    <Assembly>DynamoBundle.dll</Assembly>
+    <FullClassName>DynamoBundle.PurgeImportedDWG</FullClassName>
+    <ClientId>2d7f4c39-3e43-466d-9e27-ef98b7718e65
+    </ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>Archilizer, http://archilizer.com</VendorDescription>
+  </AddIn>
+  <!--<AddIn Type="Application">
+    <Name>Application DynamoBundle</Name>
+    <Assembly>DynamoBundle.dll</Assembly>
+    <FullClassName>DynamoBundle.App</FullClassName>
+    <ClientId>f8a37db5-55b2-42fb-9d6c-a592b87f58c4</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+</RevitAddIns>

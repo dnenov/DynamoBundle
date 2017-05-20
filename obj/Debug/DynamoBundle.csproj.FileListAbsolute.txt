@@ -1,0 +1,7 @@
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\obj\Debug\DynamoBundle.csprojResolveAssemblyReference.cache
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\obj\Debug\DynamoBundle.ImportedDWGForm.resources
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\obj\Debug\DynamoBundle.csproj.GenerateResource.Cache
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\bin\Debug\DynamoBundle.dll
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\bin\Debug\DynamoBundle.pdb
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\obj\Debug\DynamoBundle.dll
+c:\users\deyan nenov\documents\visual studio 2015\Projects\DynamoBundle\DynamoBundle\obj\Debug\DynamoBundle.pdb
