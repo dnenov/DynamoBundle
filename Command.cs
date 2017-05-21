@@ -37,6 +37,40 @@ namespace DynamoBundle
 
     }
     [Transaction(TransactionMode.Manual)]
+    public class PurgeImportedLinePatterns : IExternalCommand
+    {
+        public Result Execute(
+        ExternalCommandData commandData,
+        ref string message,
+        ElementSet elements)
+        {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Application app = uiapp.Application;
+            Document doc = uidoc.Document;
+
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+
+            List<ElementId> importedLinePatterns = collector
+                .OfClass(typeof(LinePatternElement))
+                .Cast<LinePatternElement>()
+                .Where(x => x.Name.Contains("IMPORT"))
+                .Select(x => x.Id)
+                .ToList();
+
+            using (Transaction t = new Transaction(doc, "Delete Imported Line Patterns"))
+            {
+                t.Start();
+                string s = doc.Delete(importedLinePatterns).Count.ToString();
+                t.Commit();
+
+                TaskDialog.Show("Success", String.Format("{0} Imported Line Patterns deleted.", s));
+            }
+
+            return Result.Succeeded;
+        }
+    }
+    [Transaction(TransactionMode.Manual)]
     public class PurgeImportedDWG : IExternalCommand
     {
         public Result Execute(

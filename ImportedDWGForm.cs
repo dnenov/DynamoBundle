@@ -34,7 +34,10 @@ namespace DynamoBundle
 
         private void InitializeList()
         {
-            foreach(ImportedDWG dwg in dwgList)
+            impDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            impDataGridView.AllowUserToResizeRows = false;
+
+            foreach (ImportedDWG dwg in dwgList)
             {
                 impDataGridView.Rows.Add(dwg.name, dwg.uniqueId);
             }
