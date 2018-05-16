@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DynamoBundle
+namespace Archilizer_Purge
 {
     public partial class ImportedDWGForm : Form
     {

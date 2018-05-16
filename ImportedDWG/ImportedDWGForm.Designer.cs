@@ -1,4 +1,4 @@
-﻿namespace DynamoBundle
+﻿namespace Archilizer_Purge
 {
     partial class ImportedDWGForm
     {

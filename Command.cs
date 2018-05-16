@@ -10,7 +10,7 @@ using Autodesk.Revit.UI.Selection;
 using System.Linq;
 #endregion
 
-namespace DynamoBundle
+namespace Archilizer_Purge
 {
     internal class ImportedDWG
     {
@@ -36,6 +36,9 @@ namespace DynamoBundle
         }
 
     }
+    /// <summary>
+    /// Purges Imported Line Patterns
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     public class PurgeImportedLinePatterns : IExternalCommand
     {
@@ -70,6 +73,85 @@ namespace DynamoBundle
             return Result.Succeeded;
         }
     }
+    /// <summary>
+    /// Deletes views not on sheets
+    /// </summary>
+    [Transaction(TransactionMode.Manual)]
+    public class CommandViewsNotOnSheets : IExternalCommand
+    {
+        public Result Execute(
+          ExternalCommandData commandData,
+          ref string message,
+          ElementSet elements)
+        {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Application app = uiapp.Application;
+            Document doc = uidoc.Document;
+
+            bool permission = false;
+
+            List<ViewSheet> sheets = new FilteredElementCollector(doc)
+                .OfClass(typeof(ViewSheet))
+                .WhereElementIsNotElementType()
+                .Cast<ViewSheet>()
+                .ToList();
+
+            List<ElementId> usedViews = new List<ElementId>();
+
+            foreach (var sheet in sheets)
+            {
+                usedViews.AddRange(sheet.GetAllPlacedViews().ToList());
+            }
+
+            usedViews = usedViews.Distinct().ToList();
+
+            if (usedViews.Count == 0)
+            {
+                TaskDialog.Show("Error", "Cannot let that happen - at least one view needs to remain in the project. (No views are placed on sheets.)");
+                return Result.Failed;
+            }
+
+            List<ElementId> delete = new FilteredElementCollector(doc)
+                .OfCategory(BuiltInCategory.OST_Views)
+                .OfClass(typeof(Autodesk.Revit.DB.View))
+                .WhereElementIsNotElementType()
+                .Cast<Autodesk.Revit.DB.View>()
+                .Where(x => !x.IsTemplate)
+                .Where(sc => (sc as ViewSchedule) == null)
+                .Select(x => x.Id)
+                .ToList();
+
+            TaskDialog.Show("Warning", "Be careful with that though .. ");
+
+            string msg = "You want to delete all those hard drawng views. You certain?";
+
+            System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(msg, "Are you really sure?", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+            if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+            {
+                permission = true;
+            }
+            else if (dialogResult == System.Windows.Forms.DialogResult.No)
+            {
+                permission = false;
+            }
+
+            if (!permission) return Result.Cancelled;
+
+            using (Transaction t = new Transaction(doc, "Delete Views not on Sheets"))
+            {
+                t.Start();
+                doc.Delete(delete.Except(usedViews).ToArray());
+                t.Commit();
+            }
+
+            return Result.Succeeded;
+        }
+    }
+    /// <summary>
+    /// Purges imported DWGs
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     public class PurgeImportedDWG : IExternalCommand
     {

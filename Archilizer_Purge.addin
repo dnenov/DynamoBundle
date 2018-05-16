@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Archilizer Purge</Name>
+    <Assembly>Archilizer_Purge.dll</Assembly>
+    <FullClassName>Archilizer_Purge.App</FullClassName>
+    <ClientId>f2c34091-5140-4535-a39c-857266b20547</ClientId>
+    <VendorId>archilizer.com</VendorId>
+    <VendorDescription>Deyan Nenov, Archilizer</VendorDescription>
+  </AddIn>
+</RevitAddIns>
