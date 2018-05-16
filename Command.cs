@@ -1,7 +1,6 @@
 #region Namespaces
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -12,30 +11,54 @@ using System.Linq;
 
 namespace Archilizer_Purge
 {
-    internal class ImportedDWG
+    /// <summary>
+    /// Purge Unused Filters
+    /// </summary>
+    [Transaction(TransactionMode.Manual)]
+    public class PurgeFilters : IExternalCommand
     {
-        internal string uniqueId
+        public Result Execute(
+          ExternalCommandData commandData,
+          ref string message,
+          ElementSet elements)
         {
-            get; set;
-        }
-        internal ElementId id
-        {
-            get; set;
-        }
-        internal string name
-        {
-            get; set; 
-        }
-        internal View view
-        {
-            get; set; 
-        }
-        internal ImportedDWG()
-        {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
+            Document doc = uidoc.Document;
 
-        }
+            RemoveFilter removeFilter = new RemoveFilter(commandData);
+            // Invoke the removefilter method
+            removeFilter.DeleteUnusedFilters();
 
+
+            return Result.Succeeded;
+        }
     }
+    /// <summary>
+    /// Purges Unused View Templates
+    /// </summary>
+    [Transaction(TransactionMode.Manual)]
+    public class PurgeUnusedTemplates : IExternalCommand
+    {
+        public Result Execute(
+          ExternalCommandData commandData,
+          ref string message,
+          ElementSet elements)
+        {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
+            Document doc = uidoc.Document;
+
+            Archilizer_Purge.RemoveTemplates removeTempaltes = new Archilizer_Purge.RemoveTemplates(commandData);
+            // Invoke the removeViewTemplates method
+            removeTempaltes.removeViewTemplates();
+
+            return Result.Succeeded;
+        }
+    }
+
     /// <summary>
     /// Purges Imported Line Patterns
     /// </summary>
@@ -180,7 +203,7 @@ namespace Archilizer_Purge
                 .Where(x => !x.IsLinked)
                 .ToList();
 
-            if(imports.Count == 0)
+            if (imports.Count == 0)
             {
                 TaskDialog.Show("Error", "No imported DWGs..");
 
@@ -189,9 +212,10 @@ namespace Archilizer_Purge
 
             List<ImportedDWG> dwg = new List<ImportedDWG>();
 
-            foreach(ImportInstance instanace in imports)
+            foreach (ImportInstance instanace in imports)
             {
-                dwg.Add(new ImportedDWG {
+                dwg.Add(new ImportedDWG
+                {
                     id = instanace.Id,
                     name = instanace.LookupParameter("Name").AsString(),
                     view = doc.GetElement(instanace.OwnerViewId) as View,
@@ -199,11 +223,11 @@ namespace Archilizer_Purge
                 });
             }
 
-            using (ImportedDWGForm myform = new ImportedDWGForm(uidoc, dwg))
+            using (Archilizer_Purge.ImportedDWGForm myform = new Archilizer_Purge.ImportedDWGForm(uidoc, dwg))
             {
                 System.Windows.Forms.DialogResult result = myform.ShowDialog();
 
-                if(result == System.Windows.Forms.DialogResult.OK)
+                if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     return Result.Succeeded;
                 }
@@ -212,6 +236,30 @@ namespace Archilizer_Purge
                     return Result.Failed;
                 }
             }
+        }
+    }
+
+    internal class ImportedDWG
+    {
+        internal string uniqueId
+        {
+            get; set;
+        }
+        internal ElementId id
+        {
+            get; set;
+        }
+        internal string name
+        {
+            get; set;
+        }
+        internal View view
+        {
+            get; set;
+        }
+        internal ImportedDWG()
+        {
+
         }
     }
 }

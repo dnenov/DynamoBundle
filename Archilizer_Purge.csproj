@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="Filters\Filters.cs" />
     <Compile Include="ImportedDWG\ImportedDWGForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +61,7 @@
       <DependentUpon>ImportedDWGForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewTemplates\ViewTemplates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archilizer_Purge.addin" />

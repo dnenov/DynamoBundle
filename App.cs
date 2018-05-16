@@ -30,23 +30,32 @@ namespace Archilizer_Purge
             // Get dll assembly path
             string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
-            PushButtonData dwgBtn = CreatePushButton("Purge Imported DWG Files", String.Format("Purge Imported" + Environment.NewLine + "DWG Files"), thisAssemblyPath, "Archilizer_Purge.PurgeImportedDWG", 
+            PushButtonData dwgBtn = CreatePushButton("Imported DWG Files", "Imported DWG Files", thisAssemblyPath, "Archilizer_Purge.PurgeImportedDWG", 
                 "Purges imported (but not linked) DWG files in the current project.", "purge.png", "purge_small.png");
 
-            PushButtonData dwgLinesBtn = CreatePushButton("Purge DWG Line Patterns", String.Format("Purge DWG" + Environment.NewLine + "Line Patterns"), thisAssemblyPath, "Archilizer_Purge.PurgeImportedLinePatterns",
+            PushButtonData dwgLinesBtn = CreatePushButton("DWG Line Patterns", "DWG Line Patterns", thisAssemblyPath, "Archilizer_Purge.PurgeImportedLinePatterns",
                 "Purges line patterns brought by imported DWG files.", "purge.png", "purge_small.png");
 
-            PushButtonData viewsBtn = CreatePushButton("Purge Views not on Sheets", String.Format("Purge Views" + Environment.NewLine + "not on Sheets"), thisAssemblyPath, "Archilizer_Purge.CommandViewsNotOnSheets",
+            PushButtonData viewsBtn = CreatePushButton("Views not on Sheets", "Views not on Sheets", thisAssemblyPath, "Archilizer_Purge.CommandViewsNotOnSheets",
                 "Purges Views not placed on Sheets. Use at your own risk!", "purge.png", "purge_small.png");
 
+            PushButtonData vtemplateBtn = CreatePushButton("Unused View Templates", "Unused View Templates", thisAssemblyPath, "Archilizer_Purge.PurgeUnusedTemplates",
+                "Purges Unused View Templates.", "purge.png", "purge_small.png");
 
-            SplitButtonData sb1 = new SplitButtonData("purgeButton", "Purge");
-            SplitButton sb = ribbonPanel.AddItem(sb1) as SplitButton;
-            sb.IsSynchronizedWithCurrentItem = true;
+            PushButtonData filtersBtn = CreatePushButton("Unused Filters", "Unused Filters", thisAssemblyPath, "Archilizer_Purge.PurgeFilters",
+                "Purges Unused Filters (Filters that have never been assigned to a View or a View Template).", "purge.png", "purge_small.png");
 
-            sb.AddPushButton(dwgBtn);
-            sb.AddPushButton(dwgLinesBtn);
-            sb.AddPushButton(viewsBtn);
+            PulldownButtonData pd1 = new PulldownButtonData("purgeButton", "Purge");
+            BitmapImage pdImage = new BitmapImage(new Uri(String.Format("pack://application:,,,/Archilizer_Purge;component/Resources/{0}", "purge.png")));
+            pd1.LargeImage = pdImage;
+            pd1.Image = pdImage;
+            PulldownButton pd = ribbonPanel.AddItem(pd1) as PulldownButton;
+
+            pd.AddPushButton(dwgBtn);
+            pd.AddPushButton(dwgLinesBtn);
+            pd.AddPushButton(viewsBtn);
+            pd.AddPushButton(vtemplateBtn);
+            pd.AddPushButton(filtersBtn);
         }
         
         private static PushButtonData CreatePushButton(string text, string name, string path, string command, string tooltip, string icon, string iconSmall)
@@ -58,17 +67,18 @@ namespace Archilizer_Purge
                 command);
 
             pbData.ToolTip = tooltip;
-            BitmapImage pbLImage = new BitmapImage(new Uri(String.Format("pack://application:,,,/Archilizer_Purge;component/Resources/{0}", icon)));
-            pbData.LargeImage = pbLImage;
-            BitmapImage pbSImage = new BitmapImage(new Uri(String.Format("pack://application:,,,/Archilizer_Purge;component/Resources/{0}", iconSmall)));
-            pbData.Image = pbSImage;
 
             return pbData;
         }
         
         public Result OnStartup(UIControlledApplication a)
         {
-            AddRibbonPanel(a);
+            // Make sure you have to update the plugin
+            string version = a.ControlledApplication.VersionNumber;
+            if(Int32.Parse(version) < 2019)
+            {
+                AddRibbonPanel(a);
+            }
             return Result.Succeeded;
         }
 
