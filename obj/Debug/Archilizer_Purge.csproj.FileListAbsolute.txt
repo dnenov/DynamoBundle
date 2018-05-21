@@ -1,12 +1,3 @@
-C:\Users\dneno\source\repos\DynamoBundle\bin\Debug\Archilizer_Purge.dll
-C:\Users\dneno\source\repos\DynamoBundle\bin\Debug\Archilizer_Purge.pdb
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.g.resources
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.ImportedDWGForm.resources
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.GenerateResource.cache
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.CoreCompileInputs.cache
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.dll
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.pdb
-C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csprojResolveAssemblyReference.cache
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\bin\Debug\Archilizer_Purge.dll
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\bin\Debug\Archilizer_Purge.pdb
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.csprojResolveAssemblyReference.cache
@@ -15,3 +6,11 @@ C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\D
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.GenerateResource.Cache
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.dll
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.pdb
+C:\Users\dneno\source\repos\DynamoBundle\bin\Debug\Archilizer_Purge.dll
+C:\Users\dneno\source\repos\DynamoBundle\bin\Debug\Archilizer_Purge.pdb
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.g.resources
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.ImportedDWGForm.resources
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.GenerateResource.cache
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.CoreCompileInputs.cache
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.dll
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.pdb
