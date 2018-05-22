@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archilizer_Purge.addin" />
-    <Resource Include="Resources\purge_small.png" />
     <Resource Include="Resources\purge.png" />
   </ItemGroup>
   <ItemGroup>
