@@ -12,6 +12,22 @@ using System.Linq;
 namespace Archilizer_Purge
 {
     /// <summary>
+    /// Deletes those pesky *.0023.rvt files ..
+    /// </summary>
+    [Transaction(TransactionMode.Manual)]
+    public class CommandDeleteBackups : IExternalCommand
+    {
+        public Result Execute(
+          ExternalCommandData commandData,
+          ref string message,
+          ElementSet elements)
+        {
+            DeleteBackups.Delete();
+            DeleteBackups.DisposeInstance();
+            return Result.Succeeded;
+        }
+    }
+    /// <summary>
     /// Purge Unused Filters
     /// </summary>
     [Transaction(TransactionMode.Manual)]

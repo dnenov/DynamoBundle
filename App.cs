@@ -30,6 +30,9 @@ namespace Archilizer_Purge
             // Get dll assembly path
             string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
+            PushButtonData delBackupsBtn = CreatePushButton("Delete Backups", "Delete Backups", thisAssemblyPath, "Archilizer_Purge.CommandDeleteBackups",
+                "Deletes those pesky .00??.rvt files.", "purge.png", "purge_small.png");
+
             PushButtonData dwgBtn = CreatePushButton("Imported DWG Files", "Imported DWG Files", thisAssemblyPath, "Archilizer_Purge.PurgeImportedDWG", 
                 "Purges imported (but not linked) DWG files in the current project.", "purge.png", "purge_small.png");
 
@@ -51,6 +54,7 @@ namespace Archilizer_Purge
             pd1.Image = pdImage;
             PulldownButton pd = ribbonPanel.AddItem(pd1) as PulldownButton;
 
+            pd.AddPushButton(delBackupsBtn);
             pd.AddPushButton(dwgBtn);
             pd.AddPushButton(dwgLinesBtn);
             pd.AddPushButton(viewsBtn);
