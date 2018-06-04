@@ -147,7 +147,7 @@ namespace Archilizer_Purge
 
             TaskDialog.Show("Warning", "Be careful with that though .. ");
 
-            string msg = "You want to delete all those hard drawng views. You certain?";
+            string msg = "You want to delete all those hard drawn views. You certain?";
 
             System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(msg, "Are you really sure?", System.Windows.Forms.MessageBoxButtons.YesNo);
 
