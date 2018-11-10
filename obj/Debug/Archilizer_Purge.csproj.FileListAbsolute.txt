@@ -15,3 +15,6 @@ C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\D
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.pdb
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\bin\Debug\ByteSize.dll
 C:\Users\didon\OneDrive\Documents\Visual Studio 2015\Projects\DynamoBundle\obj\Debug\Archilizer_Purge.csprojResolveAssemblyReference.cache
+C:\Users\dneno\source\repos\DynamoBundle\bin\Debug\ByteSize.dll
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csproj.CopyComplete
+C:\Users\dneno\source\repos\DynamoBundle\obj\Debug\Archilizer_Purge.csprojAssemblyReference.cache
