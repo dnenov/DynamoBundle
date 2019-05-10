@@ -17,6 +17,7 @@ namespace Archilizer_Purge
         {
             // Create a custom ribbon panel
             String tabName = "Archilizer";
+            String version = "1.0.1";
             try
             {
                 application.CreateRibbonTab(tabName);
@@ -49,6 +50,7 @@ namespace Archilizer_Purge
                 "Purges Unused Filters (Filters that have never been assigned to a View or a View Template).", "purge.png", "purge_small.png");
 
             PulldownButtonData pd1 = new PulldownButtonData("purgeButton", "Purge");
+            pd1.ToolTip = String.Format("v{0}", version);
             BitmapImage pdImage = new BitmapImage(new Uri(String.Format("pack://application:,,,/Archilizer_Purge;component/Resources/{0}", "purge.png")));
             pd1.LargeImage = pdImage;
             pd1.Image = pdImage;
@@ -78,11 +80,14 @@ namespace Archilizer_Purge
         public Result OnStartup(UIControlledApplication a)
         {
             // Make sure you have to update the plugin
+            /*
             string version = a.ControlledApplication.VersionNumber;
             if(Int32.Parse(version) < 2019)
             {
                 AddRibbonPanel(a);
             }
+            */
+            AddRibbonPanel(a);
             return Result.Succeeded;
         }
 

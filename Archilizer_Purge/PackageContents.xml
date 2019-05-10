@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage 
+  SchemaVersion="1.0" 
+  AutodeskProduct="Revit" 
+  ProductType="Application" 
+  Name="ArchilizerPurge" 
+  AppVersion="1.0.2" 
+  Description="A collection of short Revit scripts that complement Purging." 
+  Author="Archilizer" 
+  ProductCode="{F0F57DF7-C766-47FF-9393-E9EEDC19E378}" 
+  UpgradeCode="{809E9629-651A-4DAA-B960-998917880D56}" 
+  SupportedLocales="Enu" 
+  FriendlyVersion="1.0.0" 
+  OnlineDocumentation="http://archilizer.com">
+  
+  <CompanyDetails Name="Archilizer" Phone=" " Url="http://archilizer.com " Email="support@archilizer.com " />  
+  <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2018" SeriesMax="R2020" />
+  
+  <Components Description="2018 parts">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2018" SeriesMax="R2018" />
+    <ComponentEntry AppName="Archilizer_Purge" Version="1.0.0" ModuleName="./Content/windows/Archilizer_Purge.addin" AppDescription="A collection of short Revit scripts that complement Purging." />
+  </Components>
+  
+  <Components Description="2019 parts">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2019" SeriesMax="R2019" />
+    <ComponentEntry AppName="Archilizer_Purge" Version="1.0.0" ModuleName="./Content/windows/Archilizer_Purge.addin" AppDescription="A collection of short Revit scripts that complement Purging." />
+  </Components>
+  
+  <Components Description="2020 parts">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2020" SeriesMax="R2020" />
+    <ComponentEntry AppName="Archilizer_Purge" Version="1.0.0" ModuleName="./Content/windows/Archilizer_Purge.addin" AppDescription="A collection of short Revit scripts that complement Purging." />
+  </Components>
+  
+</ApplicationPackage>
